@@ -1,14 +1,26 @@
 <div class="text-center mt-5">
-  <h1 class="display-5 fw-bold text-primary mb-3">Benvenuto su Meteo Angular 🌍</h1>
+  <h1 class="display-5 fw-bold text-primary mb-3">
+    Benvenuto su Meteo Angular 🌍
+  </h1>
   <p class="text-muted mb-4">
-    Scopri il meteo in tempo reale in qualsiasi città del mondo con un’interfaccia moderna e leggera.
+    Scopri il meteo in tempo reale in qualsiasi città del mondo con
+    un’interfaccia moderna e leggera.
   </p>
-
-  <a
-    class="btn btn-primary btn-lg px-4"
+<div class="d-flex flex-column align-items-center gap-3 mt-4">
+    <a
+    class="btn btn-primary btn-lg w-50"
     routerLink="/meteo"
     (click)="onNavigateToMeteo()"
   >
     ☀️ Vai al Meteo
   </a>
+  <a
+    class="btn btn-outline-primary btn-lg w-50"
+    routerLink="/cocktail"
+    (click)="onNavigateToCocktail()"
+  >
+    🍹 Vai ai Cocktail
+  </a>
+</div>
+
 </div>

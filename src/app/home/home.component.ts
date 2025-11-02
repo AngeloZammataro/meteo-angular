@@ -17,4 +17,13 @@ export class HomeComponent {
       (error) => console.error('❌ Errore navigazione:', error)
     );
   }
+
+  onNavigateToCocktail(): void {
+    console.log('✅ Pulsante cliccato, provo a navigare verso /cocktail');
+    this.router.navigate(['/cocktail']).then(
+      (success) => console.log('➡️ Navigazione riuscita:', success),
+      (error) => console.error('❌ Errore navigazione:', error)
+    );
+  }
 }
+

@@ -1,18 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
   <div class="container">
     <a class="navbar-brand fw-bold d-flex align-items-center" routerLink="/">
-      🌦️ Meteo Angular
+      🌦️ Demo Angular
     </a>
 
     <ul class="navbar-nav ms-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           🏠 Home
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/meteo" routerLinkActive="active">
           ☀️ Meteo
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/cocktail" routerLinkActive="active" class="nav-link">
+          🍹 Cocktail
         </a>
       </li>
     </ul>

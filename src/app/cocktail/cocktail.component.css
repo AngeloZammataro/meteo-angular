@@ -1,0 +1,19 @@
+.autocomplete-container {
+  position: relative;
+}
+
+.list-group-item:hover {
+  background-color: #e7f1ff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
