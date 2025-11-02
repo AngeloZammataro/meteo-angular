@@ -1,0 +1,128 @@
+<!-- HEADER -->
+<header class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container d-flex justify-content-between align-items-center">
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
+      <img
+        src="assets/icons/weather-app.png"
+        alt="Logo Meteo Angular"
+        width="36"
+        height="36"
+        class="rounded"
+      />
+      <span class="fs-5">Meteo Angular</span>
+    </a>
+    <span class="text-white-50 small">Powered by Open-Meteo API</span>
+  </div>
+</header>
+
+
+<!-- MAIN -->
+<main class="container py-5 text-center">
+  <h1 class="display-6 fw-semibold text-primary mb-3">
+    Scopri il meteo in tempo reale
+  </h1>
+  <p class="text-muted mb-4">
+    Inserisci una città per conoscere temperatura e vento attuali.
+  </p>
+
+  <!-- AUTOCOMPLETE -->
+  <div
+    class="autocomplete-container position-relative mx-auto"
+    style="max-width: 500px"
+  >
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Digita una città..."
+      [(ngModel)]="city"
+      (input)="onCityInput()"
+      (blur)="hideSuggestions()"
+    />
+
+    <ul
+      *ngIf="suggestionsVisible && filteredCities.length > 0"
+      class="list-group position-absolute w-100 mt-1 shadow-sm"
+      style="z-index: 1000"
+    >
+      <li
+        *ngFor="let c of filteredCities"
+        (click)="selectCity(c)"
+        class="list-group-item list-group-item-action"
+      >
+        {{ c.name }} ({{ c.country }})
+      </li>
+    </ul>
+  </div>
+
+  <!-- INFO LOCALITÀ -->
+  <div *ngIf="selectedCity" class="mt-4 text-muted">
+    🌍 {{ selectedCity?.admin1 || "-" }} — {{ selectedCity?.admin2 || "-" }}
+  </div>
+
+  <!-- CARD METEO -->
+  <div
+    *ngIf="weatherData && !isLoading"
+    class="card shadow-sm p-4 bg-body rounded text-center mt-4"
+  >
+    <h3 class="mb-3">Meteo attuale a {{ selectedCity?.name | titlecase }}</h3>
+
+    <div class="d-flex justify-content-center align-items-center flex-column">
+      <p class="fs-5 mb-2">
+  🌡️ <strong>Temperatura:</strong> {{ weatherData.temperature }} °C
+</p>
+
+<p class="fs-5 mb-3">
+  💨 <strong>Vento:</strong> {{ weatherData.windspeed }} km/h
+</p>
+
+<p class="fs-6 text-muted">
+  🕒 <strong>Aggiornato alle:</strong>
+  {{ weatherData.time | date: 'dd/MM/yyyy, HH:mm' : 'UTC' }}
+</p>
+
+    </div>
+  </div>
+
+  <!-- SPINNER -->
+  <div *ngIf="isLoading" class="text-center text-secondary mt-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Caricamento...</span>
+    </div>
+    <p class="mt-3">Caricamento dati meteo...</p>
+  </div>
+
+  <!-- MAPPA -->
+  <div
+    *ngIf="selectedCity; else placeholder"
+    class="d-flex justify-content-center mt-5"
+  >
+    <div
+      id="map"
+      class="rounded shadow-sm"
+      style="height: 400px; width: 90%; max-width: 900px"
+    ></div>
+  </div>
+
+  <!-- PLACEHOLDER -->
+  <ng-template #placeholder>
+    <div class="text-muted mt-5 py-5">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/1116/1116453.png"
+        width="80"
+        class="mb-3 opacity-50"
+        alt="icona meteo"
+      />
+      <p class="fs-6">Cerca una città per visualizzare la mappa meteo 🌤️</p>
+    </div>
+  </ng-template>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-light text-center py-3 border-top mt-auto">
+  <div class="container">
+    <p class="mb-1 text-muted small">
+      © {{ currentYear }} Meteo Angular — dati forniti da
+      <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a>
+    </p>
+  </div>
+</footer>

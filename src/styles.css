@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'leaflet/dist/leaflet.css';
+
+body {
+  background: #f8f9fa;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+h1, h3 {
+  color: #004080;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+main {
+  min-height: 80vh;
+}
+
+footer {
+  font-size: 0.9rem;
+}
+
+.autocomplete-container {
+  position: relative;
+}
+
+.list-group-item:hover {
+  background-color: #e9f2ff;
+  cursor: pointer;
+}
+
+#map {
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #f8f9fa;
+  z-index: 0;
+}
+
+
+
